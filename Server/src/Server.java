@@ -39,18 +39,17 @@ public class Server {
                     bufferedWriter.flush();
 
                     if(messageFromClient.equalsIgnoreCase("BYE")){
-//                        innerRunning = false;
                         break;
                     }
                 }
-                closeStreams(socket, inputStreamReader, outputStreamWriter, bufferedReader, bufferedWriter);
+                closeAll(socket, inputStreamReader, outputStreamWriter, bufferedReader, bufferedWriter);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private static void closeStreams(Socket socket, InputStreamReader inputStreamReader, OutputStreamWriter outputStreamWriter, BufferedReader bufferedReader, BufferedWriter bufferedWriter) throws IOException {
+    private static void closeAll(Socket socket, InputStreamReader inputStreamReader, OutputStreamWriter outputStreamWriter, BufferedReader bufferedReader, BufferedWriter bufferedWriter) throws IOException {
         socket.close();
         inputStreamReader.close();
         outputStreamWriter.close();

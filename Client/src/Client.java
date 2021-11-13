@@ -43,18 +43,17 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
-            closeStreams(socket, inputStreamReader, outputStreamWriter, bufferedReader, bufferedWriter);
+            closeAll(socket, inputStreamReader, outputStreamWriter, bufferedReader, bufferedWriter);
         }
     }
 
-    private static void closeStreams(Socket socket, InputStreamReader inputStreamReader, OutputStreamWriter outputStreamWriter, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
+    private static void closeAll(Socket socket, InputStreamReader inputStreamReader, OutputStreamWriter outputStreamWriter, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
         try {
             if (Objects.nonNull(socket)) {
                 socket.close();
             }
             if (Objects.nonNull(inputStreamReader)) {
                 inputStreamReader.close();
-                ;
             }
             if (Objects.nonNull(outputStreamWriter)) {
                 outputStreamWriter.close();
